@@ -5,7 +5,7 @@
     "yourMessage": "Votre message",
     "yourPhone": "Votre numéro de téléphone",
     "send": "Envoyer",
-    "coordinates": "Mes coordonnées",
+    "coordinates": "Mes coordonnées:",
     "sentMessage": "Votre message m'est bien parvenu! Je vous répondrai dans les plus brefs délais.",
     "errorMessage": "Une erreur est survenue lors de l'envoie de votre message. Veuillez réessayer plus tard ou me contacter via mes coordonnées ci-dessous."
 }

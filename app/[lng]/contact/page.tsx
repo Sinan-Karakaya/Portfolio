@@ -9,7 +9,7 @@ export default async function ContactPage({ params: { lng } }: { params: { lng: 
   const { t } = await useTranslation(lng, 'contact')
 
   return (
-    <Card className='max-w-5xl w-full md:w-6/12'>
+    <Card className='max-w-5xl w-full lg:w-6/12'>
       <CardHeader>
         <h1 className={`${title({ size: 'sm' })}`}>{t('title')}</h1>
       </CardHeader>
@@ -20,7 +20,7 @@ export default async function ContactPage({ params: { lng } }: { params: { lng: 
       <Divider />
       <CardFooter>
         <div className='text-sm text-foreground-500'>
-          <p>My coordinates:</p>
+          <p>{t('coordinates')}</p>
           <Link
             href='mailto:sinan.karakaya@epitech.eu'
             isExternal

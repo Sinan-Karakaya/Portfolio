@@ -37,7 +37,7 @@ export default function ContactForm({ lng }: { lng: string }) {
   }
 
   return (
-    <form className='grid grid-cols-1 md:grid-cols-2 gap-4' onSubmit={sendMessage}>
+    <form className='lg:grid lg:grid-cols-2 flex flex-col gap-4' onSubmit={sendMessage}>
       <Input
         label={t('yourName')}
         className='col-span-2'
