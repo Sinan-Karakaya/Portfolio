@@ -10,16 +10,32 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum LANGUAGES {
+  EN
+  FR
+}
+
 model Project {
-  id          Int      @id @default(autoincrement())
-  title       String
-  description String[] @default([])
-  languages   String[] @default([])
-  coverImage  String
-  images      String[]
-  github      String
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  id                Int             @id @default(autoincrement())
+  title             String
+  description       TextTranslation @relation(fields: [textTranslationId], references: [id], onDelete: Cascade)
+  textTranslationId Int
+  languages         String[]        @default([])
+  coverImage        String
+  images            String[]
+  github            String
+  weight            Int             @default(0)
+  createdAt         DateTime        @default(now())
+  updatedAt         DateTime        @updatedAt
+}
+
+model TextTranslation {
+  id        Int       @id @default(autoincrement())
+  language  LANGUAGES
+  text      Json
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  Project   Project[]
 }
 
 model User {

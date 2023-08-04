@@ -1,4 +1,5 @@
 import { prisma } from '@/app/lib/prisma'
+import { LANGUAGES } from '@prisma/client'
 import { NextResponse } from 'next/server'
 
 export async function GET() {
@@ -18,7 +19,12 @@ export async function POST(req: Request) {
     const project = await prisma.project.create({
       data: {
         title: json.title,
-        description: json.description,
+        description: {
+          create: {
+            language: LANGUAGES.EN,
+            text: json.description,
+          }
+        },
         coverImage: json.coverImage,
         github: json.github,
         languages: json.languages,

@@ -1,5 +1,5 @@
 import { prisma } from '@/app/lib/prisma'
-import { Project } from '@prisma/client'
+import { LANGUAGES, Project } from '@prisma/client'
 import { NextResponse } from 'next/server'
 
 export async function GET({ params }: { params: { id: string } }) {
@@ -18,14 +18,18 @@ export async function GET({ params }: { params: { id: string } }) {
 
 export async function PATCH(req: Request, { params }: { params: { id: string } }) {
   try {
-    const json: Project = await req.json()
-    console.error(json)
+    const { description, id, ...json } = await req.json()
 
     const project = await prisma.project.update({
       where: {
         id: parseInt(params.id),
       },
       data: {
+        description: {
+          update: {
+            text: description,
+          }
+        },
         ...json,
       },
     })

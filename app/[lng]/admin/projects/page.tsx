@@ -4,7 +4,7 @@ import { Button } from '@nextui-org/button'
 import { Link } from '@nextui-org/link'
 
 export default async function Admin({ params: { lng } }: { params: { lng: string } }) {
-  const projects = await prisma.project.findMany()
+  const projects = await prisma.project.findMany({ include: { description: true } })
 
   return (
     <div className='flex flex-col gap-y-4'>
@@ -22,6 +22,7 @@ export default async function Admin({ params: { lng } }: { params: { lng: string
         {projects.map((project) => (
           <ProjectCard
             project={project}
+            lng={lng}
             isEdit
           />
         ))}
