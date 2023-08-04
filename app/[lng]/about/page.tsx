@@ -68,7 +68,7 @@ export default async function About({ params: { lng } }: { params: { lng: string
               variant='shadow'
               color='primary'
               as={Link}
-              href='/about'
+              href='/projects'
             >
               {t('projects')}
             </Button>
