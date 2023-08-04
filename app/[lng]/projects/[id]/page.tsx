@@ -41,6 +41,8 @@ export default async function Project({ params: { lng, id } }: { params: { lng: 
         />
         <CardBody>
           {project?.description.text[lng as keyof typeof project.description.text]
+          // TODO: Fix this
+          // @ts-ignore
             .split('\n\n')
             .map((paragraph: string, index: number) => (
               <>
