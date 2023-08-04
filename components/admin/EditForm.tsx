@@ -56,18 +56,17 @@ export default function EditForm({ project, lng }: { project: any; lng: string }
     }
   }
 
-  const submitProject = async () => {
+  const uploadImages = async (): Promise<string[]> => {
     const imagesURLs: string[] = []
-    setSubmitting(true)
+    const cloudSecrets = await fetch('/api/secrets/cloudinary').then((res) => res.json())
 
     const imagesArray = Array.from(images || [])
-    imagesArray.forEach(async (image) => {
+    for (const image of imagesArray) {
       const imagesForm = new FormData()
       imagesForm.append('file', image as Blob)
-      imagesForm.append('upload_preset', 'portfolio')
+      imagesForm.append('upload_preset', cloudSecrets.cloudPreset)
 
-      const res = await fetch('cloudinary', {
-        // TODO: CHange url to cloudinary upload url
+      const res = await fetch(`https://api.cloudinary.com/v1_1/${cloudSecrets.cloudName}/image/upload`, {
         method: 'POST',
         body: imagesForm,
       })
@@ -75,7 +74,15 @@ export default function EditForm({ project, lng }: { project: any; lng: string }
         const data = await res.json()
         imagesURLs.push(data.secure_url)
       }
-    })
+    }
+
+    return imagesURLs
+  }
+
+  const submitProject = async () => {
+    setSubmitting(true)
+
+    const imagesURLs = await uploadImages()
 
     const status = await fetch(`/api/projects/${project.id}`, {
       method: 'PATCH',

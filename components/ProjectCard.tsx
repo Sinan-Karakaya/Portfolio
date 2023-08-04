@@ -4,7 +4,7 @@ import { Project } from '@prisma/client'
 import { title } from './primitives'
 import { Link } from '@nextui-org/link'
 
-export default function ProjectCard({ project, lng, isEdit = false }: { project: any, lng: string, isEdit: boolean }) {
+export default function ProjectCard({ project, lng, isEdit = false }: { project: any, lng: string, isEdit?: boolean }) {
   return (
     <Link href={isEdit ? `/admin/projects/edit/${project.id}` : `/projects/${project.id}`}>
       <Card

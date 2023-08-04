@@ -45,21 +45,25 @@ export default function NewForm({ lng }: { lng: string }) {
     const imagesURLs: string[] = []
     setSubmitting(true)
 
-    // const imagesArray = Array.from(images || [])
-    // imagesArray.forEach(async (image) => {
-    //   const imagesForm = new FormData()
-    //   imagesForm.append('file', image as Blob)
-    //   imagesForm.append('upload_preset', 'portfolio')
+    const cloudSecrets = await fetch('/api/secrets/cloudinary').then((res) => res.json())
 
-    //   const res = await fetch('cloudinary', {     // TODO: CHange url to cloudinary upload url
-    //     method: 'POST',
-    //     body: imagesForm,
-    //   })
-    //   if (res.ok) {
-    //     const data = await res.json()
-    //     imagesURLs.push(data.secure_url)
-    //   }
-    // })
+    const imagesArray = Array.from(images || [])
+    imagesArray.forEach(async (image) => {
+      const imagesForm = new FormData()
+      imagesForm.append('file', image as Blob)
+      imagesForm.append('upload_preset', cloudSecrets.cloudPreset)
+
+      const res = await fetch(`https://api.cloudinary.com/v1_1/${cloudSecrets.cloudName}/image/upload`, {
+        method: 'POST',
+        body: imagesForm,
+      })
+      if (res.ok) {
+        const data = await res.json()
+        imagesURLs.push(data.secure_url)
+      } else {
+        setError('Something went wrong when uploading the images')
+      }
+    })
 
     console.log({ title, description, languages, github, imagesURLs })
 
@@ -70,8 +74,8 @@ export default function NewForm({ lng }: { lng: string }) {
         description: description,
         languages: languages?.split('/'),
         github,
-        coverImage: imagesURLs[0] ?? 'coucou',
-        images: imagesURLs.slice(1) ?? [],
+        coverImage: imagesURLs[0],
+        images: imagesURLs.slice(1),
       }),
     })
     setSubmitting(false)
