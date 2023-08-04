@@ -41,14 +41,12 @@ export default function NewForm({ lng }: { lng: string }) {
     }
   }
 
-  const submitProject = async () => {
+  const uploadImages = async (): Promise<string[]> => {
     const imagesURLs: string[] = []
-    setSubmitting(true)
-
     const cloudSecrets = await fetch('/api/secrets/cloudinary').then((res) => res.json())
 
     const imagesArray = Array.from(images || [])
-    imagesArray.forEach(async (image) => {
+    for (const image of imagesArray) {
       const imagesForm = new FormData()
       imagesForm.append('file', image as Blob)
       imagesForm.append('upload_preset', cloudSecrets.cloudPreset)
@@ -60,12 +58,16 @@ export default function NewForm({ lng }: { lng: string }) {
       if (res.ok) {
         const data = await res.json()
         imagesURLs.push(data.secure_url)
-      } else {
-        setError('Something went wrong when uploading the images')
       }
-    })
+    }
 
-    console.log({ title, description, languages, github, imagesURLs })
+    return imagesURLs
+  }
+
+  const submitProject = async () => {
+    setSubmitting(true)
+
+    const imagesURLs = await uploadImages()
 
     const status = await fetch(`/api/projects`, {
       method: 'POST',
