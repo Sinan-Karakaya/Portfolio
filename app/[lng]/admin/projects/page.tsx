@@ -19,11 +19,12 @@ export default async function Admin({ params: { lng } }: { params: { lng: string
         </Button>
       </div>
       <section className='grid grid-cols-1 md:grid-cols-2 gap-4 overflow-y-auto md:max-h-[64rem]'>
-        {projects.map((project) => (
+        {projects.map((project, index) => (
           <ProjectCard
             project={project}
             lng={lng}
             isEdit
+            key={index}
           />
         ))}
       </section>

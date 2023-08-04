@@ -19,7 +19,7 @@ export default function Guard({ children }: { children: React.ReactNode }) {
     if (unauthorized && pathname.includes('/admin')) {
       router.push('/auth')
     }
-  }, [loading, unauthorized, sessionStatus, router])
+  }, [loading, unauthorized, sessionStatus, router, pathname])
 
   if (loading) {
     return (

@@ -37,6 +37,7 @@ export default async function Project({ params: { lng, id } }: { params: { lng: 
         <Image
           src={project.coverImage}
           isBlurred
+          alt={project.title}
         />
         <CardBody>
           {project?.description.text[lng as keyof typeof project.description.text]
@@ -49,6 +50,7 @@ export default async function Project({ params: { lng, id } }: { params: { lng: 
                   <Image
                     src={project.images[index + 1]}
                     isBlurred
+                    alt={project.title}
                   />
                 )}
               </>
