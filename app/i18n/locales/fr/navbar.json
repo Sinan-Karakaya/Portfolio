@@ -1,6 +1,6 @@
 {
-    "home": "Acceuil",
-    "about": "À propos",
-    "projects": "Projets",
-    "contact": "Me contacter"
+  "home": "accueil",
+  "about": "À propos",
+  "projects": "Projets",
+  "contact": "Me contacter"
 }
