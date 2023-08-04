@@ -4,8 +4,8 @@ import { siteConfig } from "@/config/site";
 import { fontSans } from "@/config/fonts";
 import { Providers } from "./providers";
 import Navbar from "@/components/navbar";
-import { Link } from "@nextui-org/link";
 import clsx from "clsx";
+import { Analytics } from '@vercel/analytics/react';
 
 export const metadata: Metadata = {
 	title: {
@@ -46,6 +46,7 @@ export default function RootLayout({
 						</main>
 					</div>
 				</Providers>
+				<Analytics />
 			</body>
 		</html>
 	);
