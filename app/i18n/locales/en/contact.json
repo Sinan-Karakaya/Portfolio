@@ -1,0 +1,11 @@
+{
+    "title": "Contact",
+    "yourName": "Your name",
+    "yourEmail": "Your email",
+    "yourMessage": "Your message",
+    "yourPhone": "Your phone number",
+    "send": "Send",
+    "coordinates": "My coordinates:",
+    "sentMessage": "Your message has been sent. I will answer you as soon as possible !",
+    "errorMessage": "An error occured while sending your message. Please try again later or contact me directly using the information below."
+}

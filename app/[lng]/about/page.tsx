@@ -59,7 +59,7 @@ export default async function About({ params: { lng } }: { params: { lng: string
               variant='shadow'
               color='primary'
               as={Link}
-              href='/assets/SinanKarakaya_CV.pdf'
+              href={`/assets/SinanKarakaya_CV_${lng}.pdf`}
               isExternal
             >
               {t('cv')}
