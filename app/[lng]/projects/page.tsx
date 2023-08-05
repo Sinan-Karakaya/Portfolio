@@ -18,7 +18,7 @@ export default async function Projects({
   })
 
   return (
-    <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
+    <div className='grid grid-cols-1 md:grid-cols-2 gap-4 py-2'>
       {projects.map((project, index) => (
         <ProjectCard project={project} lng={lng} key={index} />
       ))}
