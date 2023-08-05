@@ -111,6 +111,7 @@ export default async function Navbar() {
                 color='foreground'
                 href={item.href}
                 size='lg'
+                className='w-full'
               >
                 {t(item.label)}
               </Link>
