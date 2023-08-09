@@ -18,7 +18,7 @@ export default function EditForm({ project, lng }: { project: any; lng: string }
 
   const [title, setTitle] = useState<string | undefined>(project.title)
   const [description, setDescription] = useState<Translation | undefined>(project.description.text)
-  const [languages, setLanguages] = useState<string | undefined>(project.languages.concat('/').join('').slice(0, -1))
+  const [languages, setLanguages] = useState<string | undefined>(project.languages.join('/'))
   const [github, setGithub] = useState<string | undefined>(project.github)
   const [weight, setWeight] = useState<number | undefined>(project.weight)
   const [images, setImages] = useState<FileList | undefined>(undefined)
