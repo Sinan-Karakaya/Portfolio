@@ -20,6 +20,7 @@ export default function NewForm({ lng }: { lng: string }) {
   const [description, setDescription] = useState<Translation | undefined>({ en: '', fr: '' })
   const [languages, setLanguages] = useState<string | undefined>()
   const [github, setGithub] = useState<string | undefined>()
+  const [weight, setWeight] = useState<number | undefined>(0)
   const [images, setImages] = useState<FileList | undefined>(undefined)
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState('')
@@ -78,6 +79,7 @@ export default function NewForm({ lng }: { lng: string }) {
         github,
         coverImage: imagesURLs[0],
         images: imagesURLs.slice(1),
+        weight,
       }),
     })
     setSubmitting(false)
@@ -141,6 +143,13 @@ export default function NewForm({ lng }: { lng: string }) {
                       className='col-span-2'
                       value={github}
                       onValueChange={setGithub}
+                    />
+                    <Input
+                      label='Weight'
+                      className='col-span-2'
+                      type='number'
+                      value={weight?.toString()}
+                      onValueChange={(value) => setWeight(parseInt(value || '0'))}
                     />
                     <Button
                       as={Link}
