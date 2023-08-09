@@ -26,7 +26,7 @@ export default async function About({ params: { lng } }: { params: { lng: string
                 height={200}
                 shadow='md'
                 width={'100%'}
-                src='/assets/images/me.jpg'
+                src='/assets/images/me.webp'
                 isBlurred
                 isZoomed
               />

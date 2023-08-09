@@ -29,6 +29,7 @@ export async function POST(req: Request) {
         github: json.github,
         languages: json.languages,
         images: json.images,
+        weight: json.weight || 0,
       },
     })
 

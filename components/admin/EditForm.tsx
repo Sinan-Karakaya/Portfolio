@@ -20,6 +20,7 @@ export default function EditForm({ project, lng }: { project: any; lng: string }
   const [description, setDescription] = useState<Translation | undefined>(project.description.text)
   const [languages, setLanguages] = useState<string | undefined>(project.languages.concat('/').join('').slice(0, -1))
   const [github, setGithub] = useState<string | undefined>(project.github)
+  const [weight, setWeight] = useState<number | undefined>(project.weight)
   const [images, setImages] = useState<FileList | undefined>(undefined)
   const [submitting, setSubmitting] = useState(false)
   const [deleting, setDeleting] = useState(false)
@@ -94,6 +95,7 @@ export default function EditForm({ project, lng }: { project: any; lng: string }
         github,
         coverImage: imagesURLs[0] ?? project.coverImage,
         images: imagesURLs.slice(1) ?? project.images,
+        weight: weight ?? project.weight,
       }),
     })
     setSubmitting(false)
@@ -162,6 +164,13 @@ export default function EditForm({ project, lng }: { project: any; lng: string }
                       className='col-span-2'
                       value={github}
                       onValueChange={setGithub}
+                    />
+                    <Input
+                      label='Weight'
+                      className='col-span-2'
+                      type='number'
+                      value={weight?.toString()}
+                      onValueChange={(value) => setWeight(parseInt(value || '0'))}
                     />
                     <Button
                       as={Link}

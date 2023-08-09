@@ -10,7 +10,7 @@ export default async function Projects({
   const { t } = await useTranslation(lng, 'projects')
   const projects = await prisma.project.findMany({
     orderBy: {
-      weight: 'asc'
+      weight: 'desc'
     },
     include: {
       description: true,
