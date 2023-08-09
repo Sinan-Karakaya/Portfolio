@@ -31,6 +31,7 @@ export default function ProjectCard({ project, lng, isEdit = false }: { project:
                     variant='shadow'
                     color='primary'
                     size='sm'
+                    key={index}
                   >
                     {language.length === 1 ? ` ${language} ` : language}
                   </Chip>

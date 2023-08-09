@@ -34,6 +34,7 @@ export default async function Project({ params: { lng, id } }: { params: { lng: 
                   <Chip
                     variant='shadow'
                     color='primary'
+                    key={index}
                   >
                     {language.length === 1 ? ` ${language} ` : language}
                   </Chip>
