@@ -2,6 +2,7 @@ import { prisma } from '@/app/lib/prisma'
 import { GithubIcon } from '@/components/icons'
 import { title } from '@/components/primitives'
 import { Card, CardBody, CardHeader } from '@nextui-org/card'
+import { Chip } from '@nextui-org/chip'
 import { Image } from '@nextui-org/image'
 import { Link } from '@nextui-org/link'
 import { Spacer } from '@nextui-org/spacer'
@@ -27,8 +28,22 @@ export default async function Project({ params: { lng, id } }: { params: { lng: 
         <CardHeader>
           <div className='flex w-full justify-between items-center mb-1'>
             <h1 className={`${title()}`}>{project.title}</h1>
-            <div className='flex flex-col items-center'>
-              <Link href={project.github} color='foreground' isExternal>
+            <div className='flex items-center gap-x-2'>
+              <div className='lg:flex hidden gap-x-2'>
+                {project.languages.map((language: string, index: number) => (
+                  <Chip
+                    variant='shadow'
+                    color='primary'
+                  >
+                    {language.length === 1 ? ` ${language} ` : language}
+                  </Chip>
+                ))}
+              </div>
+              <Link
+                href={project.github}
+                color='foreground'
+                isExternal
+              >
                 <GithubIcon size={50} />
               </Link>
             </div>
@@ -41,8 +56,8 @@ export default async function Project({ params: { lng, id } }: { params: { lng: 
         />
         <CardBody>
           {project?.description.text[lng as keyof typeof project.description.text]
-          // TODO: Fix this
-          // @ts-ignore
+            // TODO: Fix this
+            // @ts-ignore
             .split('\n\n')
             .map((paragraph: string, index: number) => (
               <>
