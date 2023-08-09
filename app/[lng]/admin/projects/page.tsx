@@ -4,7 +4,12 @@ import { Button } from '@nextui-org/button'
 import { Link } from '@nextui-org/link'
 
 export default async function Admin({ params: { lng } }: { params: { lng: string } }) {
-  const projects = await prisma.project.findMany({ include: { description: true } })
+  const projects = await prisma.project.findMany({
+    orderBy: {
+      weight: 'desc',
+    },
+    include: { description: true },
+  })
 
   return (
     <div className='flex flex-col gap-y-4'>

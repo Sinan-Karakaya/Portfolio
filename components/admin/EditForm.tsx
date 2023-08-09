@@ -118,7 +118,7 @@ export default function EditForm({ project, lng }: { project: any; lng: string }
           Delete Project
         </Button>
       </div>
-      <div className='max-w-5xl'>
+      <div className='max-w-5xl lg:w-[64rem]'>
         <Card>
           <CardBody>
             <Tabs
