@@ -20,7 +20,7 @@ import { Logo } from '@/components/icons'
 import { useTranslation } from '@/app/i18n'
 
 export default async function Navbar() {
-  const { t } = await useTranslation('fr', 'navbar')
+	const { t } = await useTranslation('fr', 'navbar')
 
   return (
     <NextUINavbar
@@ -74,8 +74,6 @@ export default async function Navbar() {
           >
             <LinkedinIcon className='text-default-500' />
           </Link>
-        </NavbarItem>
-        <NavbarItem className='hidden sm:flex gap-2'>
           <Link
             isExternal
             href={siteConfig.links.github}
@@ -132,7 +130,7 @@ export default async function Navbar() {
               size='lg'
               href='/contact'
             >
-              {t('contact')}
+            	{t('contact')}
             </Link>
           </NavbarMenuItem>
         </div>
