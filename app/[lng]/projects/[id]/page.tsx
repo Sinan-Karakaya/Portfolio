@@ -50,11 +50,14 @@ export default async function Project({ params: { lng, id } }: { params: { lng: 
             </div>
           </div>
         </CardHeader>
-        <Image
-          src={project.coverImage}
-          isBlurred
-          alt={project.title}
-        />
+        <div className='w-full flex-col justify-center'>
+          <Image
+            src={project.coverImage}
+            isBlurred
+            alt={project.title}
+            className='object-cover'
+          />
+        </div>
         <CardBody>
           {project?.description.text[lng as keyof typeof project.description.text]
             // TODO: Fix this
