@@ -54,6 +54,7 @@ export default async function Project({ params: { lng, id } }: { params: { lng: 
           src={project.coverImage}
           isBlurred
           alt={project.title}
+          className='object-cover'
         />
         <CardBody>
           {project?.description.text[lng as keyof typeof project.description.text]
