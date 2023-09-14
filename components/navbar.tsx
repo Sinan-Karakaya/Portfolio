@@ -14,7 +14,7 @@ import { siteConfig } from '@/config/site'
 import NextLink from 'next/link'
 import clsx from 'clsx'
 import { ThemeSwitch } from '@/components/theme-switch'
-import { GithubIcon } from '@/components/icons'
+import { GithubIcon, LinkedinIcon } from '@/components/icons'
 import { Logo } from '@/components/icons'
 
 import { useTranslation } from '@/app/i18n'
@@ -67,6 +67,13 @@ export default async function Navbar() {
         justify='end'
       >
         <NavbarItem className='hidden sm:flex gap-2'>
+          <Link
+            isExternal
+            href={siteConfig.links.linkedin}
+            aria-label='Linkedin'
+          >
+            <LinkedinIcon className='text-default-500' />
+          </Link>
           <Link
             isExternal
             href={siteConfig.links.github}
