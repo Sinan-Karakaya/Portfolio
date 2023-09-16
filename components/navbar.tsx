@@ -19,8 +19,8 @@ import { Logo } from '@/components/icons'
 
 import { useTranslation } from '@/app/i18n'
 
-export default async function Navbar() {
-	const { t } = await useTranslation('fr', 'navbar')
+export default async function Navbar({ lng }: { lng: string }) {
+	const { t } = await useTranslation(lng, 'navbar')
 
   return (
     <NextUINavbar
@@ -124,7 +124,7 @@ export default async function Navbar() {
               </Link>
             </NavbarMenuItem>
           ))}
-          <NavbarMenuItem key={'coucou'}>
+          <NavbarMenuItem key={'contact'}>
             <Link
               color='primary'
               size='lg'
