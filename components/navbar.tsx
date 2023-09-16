@@ -20,7 +20,7 @@ import { Logo } from '@/components/icons'
 import { useTranslation } from '@/app/i18n'
 
 export default async function Navbar({ lng }: { lng: string }) {
-	const { t } = await useTranslation(lng, 'navbar')
+  const { t } = await useTranslation(lng, 'navbar')
 
   return (
     <NextUINavbar
@@ -101,6 +101,13 @@ export default async function Navbar({ lng }: { lng: string }) {
       >
         <Link
           isExternal
+          href={siteConfig.links.linkedin}
+          aria-label='Linkedin'
+        >
+          <LinkedinIcon className='text-default-500' />
+        </Link>
+        <Link
+          isExternal
           href={siteConfig.links.github}
           aria-label='Github'
         >
@@ -130,7 +137,7 @@ export default async function Navbar({ lng }: { lng: string }) {
               size='lg'
               href='/contact'
             >
-            	{t('contact')}
+              {t('contact')}
             </Link>
           </NavbarMenuItem>
         </div>
