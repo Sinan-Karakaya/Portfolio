@@ -14,6 +14,11 @@ export const metadata: Metadata = {
     template: `%s - ${siteConfig.name}`,
   },
   description: siteConfig.description,
+  openGraph: {
+    images: [
+      siteConfig.openGraph.image,
+    ],
+  },
   themeColor: [
     { media: '(prefers-color-scheme: light)', color: 'white' },
     { media: '(prefers-color-scheme: dark)', color: 'black' },
@@ -25,7 +30,13 @@ export const metadata: Metadata = {
   },
 }
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+  params: { lng },
+}: {
+  children: React.ReactNode
+  params: { lng: string }
+}) {
   return (
     <html
       lang='en'
@@ -35,11 +46,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={clsx('min-h-screen bg-background font-sans antialiased', fontSans.variable)}>
         <Providers themeProps={{ attribute: 'class', defaultTheme: 'dark' }}>
           <div className='relative flex flex-col h-screen'>
-            <Navbar />
+            <Navbar lng={lng} />
             <main className='flex justify-center items-start md:items-center h-full px-6'>{children}</main>
           </div>
         </Providers>
-        <SpeedInsights />
+				<SpeedInsights />
         <Analytics />
       </body>
     </html>

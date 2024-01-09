@@ -14,13 +14,13 @@ import { siteConfig } from '@/config/site'
 import NextLink from 'next/link'
 import clsx from 'clsx'
 import { ThemeSwitch } from '@/components/theme-switch'
-import { GithubIcon } from '@/components/icons'
+import { GithubIcon, LinkedinIcon } from '@/components/icons'
 import { Logo } from '@/components/icons'
 
 import { useTranslation } from '@/app/i18n'
 
-export default async function Navbar() {
-	const { t } = await useTranslation('fr', 'navbar')
+export default async function Navbar({ lng }: { lng: string }) {
+  const { t } = await useTranslation(lng, 'navbar')
 
   return (
     <NextUINavbar
@@ -69,6 +69,13 @@ export default async function Navbar() {
         <NavbarItem className='hidden sm:flex gap-2'>
           <Link
             isExternal
+            href={siteConfig.links.linkedin}
+            aria-label='Linkedin'
+          >
+            <LinkedinIcon className='text-default-500' />
+          </Link>
+          <Link
+            isExternal
             href={siteConfig.links.github}
             aria-label='Github'
           >
@@ -94,6 +101,13 @@ export default async function Navbar() {
       >
         <Link
           isExternal
+          href={siteConfig.links.linkedin}
+          aria-label='Linkedin'
+        >
+          <LinkedinIcon className='text-default-500' />
+        </Link>
+        <Link
+          isExternal
           href={siteConfig.links.github}
           aria-label='Github'
         >
@@ -117,13 +131,13 @@ export default async function Navbar() {
               </Link>
             </NavbarMenuItem>
           ))}
-          <NavbarMenuItem key={'coucou'}>
+          <NavbarMenuItem key={'contact'}>
             <Link
               color='primary'
               size='lg'
               href='/contact'
             >
-            	{t('contact')}
+              {t('contact')}
             </Link>
           </NavbarMenuItem>
         </div>

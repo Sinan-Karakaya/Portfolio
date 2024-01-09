@@ -19,5 +19,9 @@ export const siteConfig = {
   ],
   links: {
     github: 'https://github.com/Sinan-Karakaya',
+    linkedin: 'https://www.linkedin.com/in/sinan-karakaya-a9355b228/',
   },
+  openGraph: {
+    image: '/assets/images/me.webp',
+  }
 }
