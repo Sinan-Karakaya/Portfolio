@@ -9,15 +9,13 @@ import Guard from '@/components/Guard'
 
 export interface ProvidersProps {
   children: React.ReactNode
-  themeProps?: ThemeProviderProps
 }
 
-export function Providers({ children, themeProps }: ProvidersProps) {
+export function Providers({ children }: ProvidersProps) {
   return (
     <NextUIProvider>
       <NextThemesProvider
         enableSystem
-        {...themeProps}
       >
         <SessionProvider>
           <Guard>{children}</Guard>

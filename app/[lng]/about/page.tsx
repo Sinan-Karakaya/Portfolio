@@ -50,6 +50,8 @@ export default async function About({ params: { lng } }: { params: { lng: string
           <p className='indent-8'>{t('body4')}</p>
           <Spacer y={4} />
           <p className='indent-8'>{t('body5')}</p>
+          <Spacer y={4} />
+          <p className='indent-8'>{t('body6')}</p>
         </CardBody>
         <Divider />
         <CardFooter>

@@ -22,11 +22,11 @@ export default async function ContactPage({ params: { lng } }: { params: { lng: 
         <div className='text-sm text-foreground-500'>
           <p>{t('coordinates')}</p>
           <Link
-            href='mailto:sinan.karakaya@epitech.eu'
+            href='mailto:karakaya.sinan@proton.me'
             isExternal
             showAnchorIcon
           >
-            sinan.karakaya@epitech.eu
+            karakaya.sinan@proton.me
           </Link>
           <br />
           <Link

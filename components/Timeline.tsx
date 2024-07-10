@@ -16,7 +16,7 @@ import { useTranslation } from '@/app/i18n/client'
 export default function Timeline({ lng }: { lng: string }) {
   const { t } = useTranslation(lng, 'timeline')
   const { isOpen, onOpen, onOpenChange } = useDisclosure()
-  const years: string[] = ['2015', '2021', '2022', '2022', '2023', '2023', '2024']
+  const years: string[] = ['2015', '2021', '2022', '2022', '2023', '2023', '2024', '2024']
 
   return (
     <>
