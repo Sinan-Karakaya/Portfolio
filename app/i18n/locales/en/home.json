@@ -1,6 +1,49 @@
 {
-    "greet": "Hi, I am ",
-    "body": "20 years old student in 3rd of computer science at EPITECH Rennes, with more than 5 years of personal experience in web/mobile development and C/C++/C#. I am passionate about new challenges, and my portfolio reflects my significant projects. I am currently looking for a 3rd year internship from February 2024 to June 2024, and I am ready to create innovative solutions.",
-    "learnMore": "Learn more",
-    "contact": "Contact me"
+  "kicker": "Portfolio",
+  "deck": "Software engineer — from bare-metal C++ to language models and the web.",
+  "lead": "Trained at **EPITECH Rennes**, with a year at **Korea University**. I’ve shipped web and mobile products at **Wildsense** and researched LLM deployment at **OVHcloud**.",
+  "ctaWork": "See the work",
+  "ctaContact": "Get in touch",
+  "portrait": "Portrait",
+  "modes": {
+    "dither": "Dither",
+    "ascii": "ASCII",
+    "raw": "Raw"
+  },
+  "work": {
+    "title": "Selected work",
+    "deck": "A few things I’ve built, broken and rebuilt.",
+    "all": "All projects"
+  },
+  "loadout": {
+    "title": "Loadout",
+    "deck": "The tools I reach for, and where they’ve been tested.",
+    "modules": [
+      {
+        "name": "Systems",
+        "stack": ["C", "C++", "C#", "CUDA", "Go"],
+        "text": "Daily C and C++ through EPITECH — servers, simulations and a GPU raytracer."
+      },
+      {
+        "name": "AI",
+        "stack": ["Python", "LLMs", "OpenCV"],
+        "text": "LLM research and deployment at OVHcloud; computer vision and speech recognition in Python."
+      },
+      {
+        "name": "Web & mobile",
+        "stack": ["TypeScript", "React", "Next.js", "React Native", "Flutter", "AdonisJS"],
+        "text": "Websites, mobile apps and REST APIs, shipped in production at Wildsense."
+      },
+      {
+        "name": "Tooling",
+        "stack": ["Git", "GitHub / GitLab CI", "Docker", "Linux", "Jenkins"],
+        "text": "Version control, CI pipelines and containers — every single day."
+      }
+    ]
+  },
+  "log": {
+    "title": "Log",
+    "deck": "The short version of the story so far.",
+    "more": "Full story"
+  }
 }

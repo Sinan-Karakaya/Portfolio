@@ -1,12 +1,32 @@
 {
-    "title": "About me",
-    "projects": "My projects",
-    "timeline": "My career",
-    "cv": "My resume",
-    "contact": "Contact me",
-    "body": "I am a 20 years old computer science student at EPITECH, in Rennes, France. My passion for programming started at the age of 15, and I decided to make it my job by joining EPITECH in 2021. This gave me the opportunity to broaden my knowledge and skills in the field of computer science and team work. Challenges do not scare me, and I am always looking for new ways to improve myself.",
-    "body2": "My 5 years of experience post-EPITECH allowed me to explore various fields of programmation, from video games, to AI trained to solve video games, to web and mobile development.",
-    "body3": "During my last 2 years at EPITECH, I learned to work in a team, improve my workflow and make it more industry standard with well known tools, all this while still improving by a lot my technical skills.",
-    "body4": "I have done a first internship at Wildsense from July 2022 to 2023. I occupied the position of a fullstack developer/mobile developer. During those 6 months, I worked with ReactJS, NextJS, React Native and AdonisJS. I was able to polish my skills by working in a professional environment, with a highly skilled team. It is planned that I will continue to work with them as a part-time intern from September 2023 to January 2024.",
-    "body5": "I am currently looking for an internship for my 3rd year at EPITECH, from February 2024 to June 2024. I am open to any kind of offer, in any kind of field of work. I am looking forward to working with you !"
+  "title": "About",
+  "deck": "Developer by obsession since fifteen, engineer by training.",
+  "lead": "I’m a software engineer based in Rennes, France. My passion for programming started at fifteen, and I made it my job by joining EPITECH in 2021.",
+  "body": [
+    "EPITECH gave me the chance to master many languages, technologies, tools and ways of working — along with what makes a team work. Challenges don’t scare me, and I’m always looking for new ways to improve.",
+    "Years of personal projects took me through many fields: from simple games, to artificial intelligences able to finish them, to websites and mobile applications.",
+    "At EPITECH I learned to work in a team, professionalise my workflow and use the tools the industry runs on — all while sharpening my technical skills a great deal.",
+    "My first internship was at Wildsense, starting July 2022, as a fullstack and mobile developer. Over six months I worked with ReactJS, NextJS, React Native and AdonisJS, and polished my skills in a professional environment alongside a highly skilled team. I later returned for a part-time internship in the same role.",
+    "I then joined OVHcloud as a backend and AI developer intern, on research projects bringing LLMs (Large Language Models) into OVHcloud’s domain services. I was in charge of research on LLMs and how to deploy them, how to protect them from malicious injections, and how to guarantee optimal performance whatever the load.",
+    "I’m open to new missions — backend, artificial intelligence or anything else. Every proposal and every field is welcome. I can’t wait to see what we’ll build together."
+  ],
+  "dossier": {
+    "title": "Dossier",
+    "name": "Name",
+    "role": "Role",
+    "base": "Base",
+    "baseValue": "Rennes, France",
+    "education": "Education",
+    "educationValue": "EPITECH Rennes · 2021 → 2026",
+    "exchange": "Exchange",
+    "exchangeValue": "Korea University · 2024",
+    "languages": "Languages",
+    "languagesValue": "French · English (TOEIC 925/990)",
+    "interests": "Interests",
+    "interestsValue": "Music · Video games · Film & series · Science"
+  },
+  "projects": "My projects",
+  "timeline": "My career",
+  "cv": "Download resume",
+  "contact": "Contact me"
 }

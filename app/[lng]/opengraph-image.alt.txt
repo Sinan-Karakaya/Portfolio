@@ -1,0 +1,1 @@
+Sinan Karakaya — software engineer, from bare-metal C++ to language models and the web.

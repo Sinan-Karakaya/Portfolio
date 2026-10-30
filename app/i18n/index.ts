@@ -12,10 +12,13 @@ const initI18next = async (lng: any, ns: any) => {
   return i18nInstance
 }
 
-export async function useTranslation(lng: string, ns: any, options: any = { keyPrefix: ''  }) {
+export async function getTranslation(lng: string, ns: any, options: any = { keyPrefix: ''  }) {
   const i18nextInstance = await initI18next(lng, ns)
   return {
     t: i18nextInstance.getFixedT(lng, Array.isArray(ns) ? ns[0] : ns, options.keyPrefix),
     i18n: i18nextInstance
   }
 }
+
+// Same helper under the name used by server components (it is not a React hook).
+export const useTranslation = getTranslation

@@ -1,3 +1,16 @@
 {
-    "back": "Back to projects"
+  "title": "Work",
+  "deck": "Systems, simulations, tools and products — built at EPITECH, at work and for fun.",
+  "back": "Back to projects",
+  "all": "All",
+  "filter": "Filter by stack",
+  "stack": "Stack",
+  "source": "Source",
+  "index": "Index",
+  "view": "View project",
+  "viewSource": "View source",
+  "next": "Next project",
+  "figure": "Fig.",
+  "empty": "No projects to show yet.",
+  "offline": "The project archive is offline right now. Please check back soon."
 }

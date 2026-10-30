@@ -1,0 +1,75 @@
+{
+  "role": "Ingénieur logiciel",
+  "skip": "Aller au contenu",
+  "menu": "Menu",
+  "close": "Fermer",
+  "nav": {
+    "home": "Accueil",
+    "about": "À propos",
+    "projects": "Projets",
+    "contact": "Contact"
+  },
+  "theme": {
+    "label": "Changer de thème",
+    "ink": "Encre",
+    "bone": "Os"
+  },
+  "sound": {
+    "label": "Activer ou couper les sons",
+    "on": "Son on",
+    "off": "Son off"
+  },
+  "language": "Langue",
+  "localTime": "Heure locale",
+  "online": "En ligne",
+  "grid": "Touche G pour la grille",
+  "intro": {
+    "skip": "Passer",
+    "replay": "Rejouer l’intro",
+    "loading": "Chargement",
+    "post": [
+      "SK/OS 2026.10 — autotest de démarrage",
+      "SYS   EPITECH RENNES · 2021 → 2026",
+      "LANG  C / C++ / CUDA / PYTHON / TS",
+      "GPU   RAYTRACER · PRÉCHAUFFE",
+      "LLM   INFÉRENCE · DÉPLOIEMENT",
+      "NET   RENNES ⇄ SÉOUL",
+      "MOUNT /PROJETS /PROFIL /CONTACT"
+    ],
+    "ok": "OK",
+    "linked": "LIÉ",
+    "ready": "PRÊT",
+    "acquired": "Signal acquis",
+    "tagline": "Du bruit naît le signal.",
+    "plate": "Planche I",
+    "stamps": {
+      "id": "ID",
+      "class": "Classe",
+      "origin": "Origine",
+      "status": "Statut"
+    }
+  },
+  "footer": {
+    "cta": "Construisons",
+    "ctaDeck": "quelque chose qui compte.",
+    "copy": "Copier l’email",
+    "copied": "Copié",
+    "navigate": "Naviguer",
+    "elsewhere": "Ailleurs",
+    "colophon": "Colophon",
+    "colophonText": "Composé en Archivo, Instrument Serif, Martian Mono et Doto. Construit avec Next.js, servi par Vercel.",
+    "resume": "CV",
+    "top": "Retour en haut",
+    "nominal": "Tous les systèmes sont nominaux"
+  },
+  "notFound": {
+    "title": "Signal perdu",
+    "deck": "Cette page s’est perdue hors de portée.",
+    "back": "Retour à l’accueil"
+  },
+  "error": {
+    "title": "Défaillance",
+    "deck": "Une erreur est survenue pendant l’affichage de cette page.",
+    "retry": "Réessayer"
+  }
+}

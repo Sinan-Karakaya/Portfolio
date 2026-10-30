@@ -1,3 +1,16 @@
 {
-    "back": "Retour aux projets"
+  "title": "Projets",
+  "deck": "Systèmes, simulations, outils et produits — conçus à EPITECH, en entreprise et pour le plaisir.",
+  "back": "Retour aux projets",
+  "all": "Tous",
+  "filter": "Filtrer par techno",
+  "stack": "Stack",
+  "source": "Source",
+  "index": "Index",
+  "view": "Voir le projet",
+  "viewSource": "Voir le code",
+  "next": "Projet suivant",
+  "figure": "Fig.",
+  "empty": "Aucun projet à afficher pour l’instant.",
+  "offline": "L’archive des projets est momentanément hors ligne. Revenez bientôt."
 }

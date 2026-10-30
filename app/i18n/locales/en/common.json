@@ -1,0 +1,75 @@
+{
+  "role": "Software engineer",
+  "skip": "Skip to content",
+  "menu": "Menu",
+  "close": "Close",
+  "nav": {
+    "home": "Index",
+    "about": "About",
+    "projects": "Work",
+    "contact": "Contact"
+  },
+  "theme": {
+    "label": "Switch theme",
+    "ink": "Ink",
+    "bone": "Bone"
+  },
+  "sound": {
+    "label": "Toggle interface sounds",
+    "on": "SFX on",
+    "off": "SFX off"
+  },
+  "language": "Language",
+  "localTime": "Local time",
+  "online": "Online",
+  "grid": "Press G for the grid",
+  "intro": {
+    "skip": "Skip",
+    "replay": "Replay intro",
+    "loading": "Loading",
+    "post": [
+      "SK/OS 2026.10 — power-on self test",
+      "SYS   EPITECH RENNES · 2021 → 2026",
+      "LANG  C / C++ / CUDA / PYTHON / TS",
+      "GPU   RAYTRACER · WARM-UP",
+      "LLM   INFERENCE · DEPLOYMENT",
+      "NET   RENNES ⇄ SEOUL",
+      "MOUNT /WORK /ABOUT /CONTACT"
+    ],
+    "ok": "OK",
+    "linked": "LINKED",
+    "ready": "READY",
+    "acquired": "Signal acquired",
+    "tagline": "From noise, signal.",
+    "plate": "Plate I",
+    "stamps": {
+      "id": "ID",
+      "class": "Class",
+      "origin": "Origin",
+      "status": "Status"
+    }
+  },
+  "footer": {
+    "cta": "Let’s build",
+    "ctaDeck": "something worth shipping.",
+    "copy": "Copy email",
+    "copied": "Copied",
+    "navigate": "Navigate",
+    "elsewhere": "Elsewhere",
+    "colophon": "Colophon",
+    "colophonText": "Set in Archivo, Instrument Serif, Martian Mono and Doto. Built with Next.js, rendered on Vercel.",
+    "resume": "Resume",
+    "top": "Back to top",
+    "nominal": "All systems nominal"
+  },
+  "notFound": {
+    "title": "Signal lost",
+    "deck": "This page drifted out of range.",
+    "back": "Return to index"
+  },
+  "error": {
+    "title": "System fault",
+    "deck": "Something went wrong while rendering this page.",
+    "retry": "Try again"
+  }
+}

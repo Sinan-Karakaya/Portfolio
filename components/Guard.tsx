@@ -3,7 +3,6 @@
 import { useEffect } from 'react'
 import { useSession } from 'next-auth/react'
 import { usePathname, useRouter } from 'next/navigation'
-import { Spinner } from '@nextui-org/react'
 
 export default function Guard({ children }: { children: React.ReactNode }) {
   const router = useRouter()
@@ -17,17 +16,15 @@ export default function Guard({ children }: { children: React.ReactNode }) {
     if (loading) return
 
     if (unauthorized && pathname.includes('/admin')) {
-      router.push('/auth')
+      router.push(`/${pathname.split('/')[1]}/auth`)
     }
   }, [loading, unauthorized, sessionStatus, router, pathname])
 
   if (loading) {
     return (
-      <div className='w-full h-screen flex justify-center items-center'>
-        <Spinner
-          size='lg'
-          color='primary'
-        />
+      <div className='label flex min-h-[50vh] items-center justify-center gap-3 text-muted'>
+        <span className='blink inline-block h-[7px] w-[7px] bg-volt' />
+        Authenticating…
       </div>
     )
   }

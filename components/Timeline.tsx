@@ -1,65 +1,43 @@
-'use client'
+import clsx from 'clsx'
 
-import {
-  Button,
-  Divider,
-  Modal,
-  ModalBody,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-  useDisclosure,
-} from '@nextui-org/react'
-import { title } from './primitives'
-import { useTranslation } from '@/app/i18n/client'
+export type Entry = { year: string; text: string }
 
-export default function Timeline({ lng }: { lng: string }) {
-  const { t } = useTranslation(lng, 'timeline')
-  const { isOpen, onOpen, onOpenChange } = useDisclosure()
-  const years: string[] = ['2015', '2021', '2022', '2022', '2023', '2023', '2024', '2024']
+// The career log, newest first, with dot-matrix years.
+export default function Timeline({ entries, limit }: { entries: Entry[]; limit?: number }) {
+  const indexed = entries.map((e, i) => ({ ...e, n: i + 1 })).reverse()
+  const shown = limit ? indexed.slice(0, limit) : indexed
 
   return (
-    <>
-      <Button
-        variant='shadow'
-        color='primary'
-        onPress={onOpen}
-        className='md:col-start-3'
-      >
-        {t('timeline')}
-      </Button>
-      <Modal
-        isOpen={isOpen}
-        onOpenChange={onOpenChange}
-        backdrop='blur'
-        size='3xl'
-      >
-        <ModalContent>
-          {(onClose) => (
-            <>
-              <ModalHeader className={title({ size: 'sm' })}>{t('timeline')}</ModalHeader>
-              <ModalBody className='py-4'>
-                <div className='flex gap-4'>
-                  <div className='w-2 min-h-full'>
-                    <Divider orientation='vertical' />
-                  </div>
-                  <div className='flex flex-col gap-y-1'>
-                    {years.map((year, index) => (
-                      <>
-                        <div className='flex'>
-                          <p className='font-bold underline'>{year + ':'}</p>
-                          &nbsp;
-                          <p>{t(`timeline${index}`)}</p>
-                        </div>
-                      </>
-                    ))}
-                  </div>
-                </div>
-              </ModalBody>
-            </>
-          )}
-        </ModalContent>
-      </Modal>
-    </>
+    <ol className='gutter mt-10'>
+      {shown.map((entry, i) => (
+        <li
+          key={entry.n}
+          data-reveal
+          style={{ ['--d' as string]: i * 70 }}
+          className='group grid-12 items-baseline gap-y-2 border-t border-line py-5 transition-colors last:border-b hover:bg-fg/[0.03] lg:py-6'
+        >
+          <span
+            className={clsx(
+              'font-dot col-span-4 text-[clamp(34px,4vw,64px)] font-black leading-none sm:col-span-3 lg:col-span-2',
+              i === 0 ? 'text-accent' : 'text-fg'
+            )}
+          >
+            {i === 0 && (
+              <span
+                aria-hidden='true'
+                className='mr-3 inline-block h-[0.22em] w-[0.22em] translate-y-[-0.1em] bg-volt'
+              />
+            )}
+            {entry.year}
+          </span>
+          <span className='label tabular col-span-8 text-right text-muted sm:col-span-2 sm:text-left lg:col-span-1'>
+            LOG.{String(entry.n).padStart(2, '0')}
+          </span>
+          <p className='col-span-12 text-pretty text-[clamp(17px,1.4vw,21px)] leading-snug transition-transform duration-500 ease-out group-hover:translate-x-1 sm:col-span-7 lg:col-span-8'>
+            {entry.text}
+          </p>
+        </li>
+      ))}
+    </ol>
   )
 }

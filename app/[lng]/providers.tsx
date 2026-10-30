@@ -1,11 +1,7 @@
 'use client'
 
 import * as React from 'react'
-import { NextUIProvider } from '@nextui-org/system'
-import { ThemeProvider as NextThemesProvider } from 'next-themes'
-import { ThemeProviderProps } from 'next-themes/dist/types'
-import { SessionProvider } from 'next-auth/react'
-import Guard from '@/components/Guard'
+import { ThemeProvider } from 'next-themes'
 
 export interface ProvidersProps {
   children: React.ReactNode
@@ -13,14 +9,14 @@ export interface ProvidersProps {
 
 export function Providers({ children }: ProvidersProps) {
   return (
-    <NextUIProvider>
-      <NextThemesProvider
-        enableSystem
-      >
-        <SessionProvider>
-          <Guard>{children}</Guard>
-        </SessionProvider>
-      </NextThemesProvider>
-    </NextUIProvider>
+    <ThemeProvider
+      attribute='data-theme'
+      themes={['ink', 'bone']}
+      defaultTheme='ink'
+      enableSystem={false}
+      disableTransitionOnChange
+    >
+      {children}
+    </ThemeProvider>
   )
 }

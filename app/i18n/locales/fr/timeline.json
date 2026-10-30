@@ -1,11 +1,13 @@
 {
-    "timeline": "Mon parcours",
-    "timeline0": "Découverte de la programmation, apprentissage du C et C++",
-    "timeline1": "Entrée à EPITECH, je deviens programmeur à temps plein et fini major de promo national du 1er semestre",
-    "timeline2": "Arrivé en 2ème année à EPITECH, le rythme s'accélère et je continue de développer mes compétences",
-    "timeline3": "Stage de 6 mois chez Wildsense en tant que développeur fullstack et mobile",
-    "timeline4": "Fin de ma 2ème année à EPITECH, je ressors avec de nouvelles connaissances et une technique encore plus poussée",
-    "timeline5": "Stage à temps partiel chez Wildsense, au même poste que le précedent stage",
-    "timeline6": "Stage chez OVHcloud en temps que développeur backend et IA, pour la recherche sur les LLMs, et leurs méthodes de déploiement et d'intégration dans les services OVHcloud",
-    "timeline7": "Année 2024 en Corée a l'University Of Korea, spécialisée dans l'architecture logicielle et l'IA"
+  "timeline": "Mon parcours",
+  "entries": [
+    { "year": "2015", "text": "Découverte de la programmation, apprentissage du C et du C++." },
+    { "year": "2021", "text": "Entrée à EPITECH : je deviens programmeur à temps plein et termine major de promo national du 1er semestre." },
+    { "year": "2022", "text": "Arrivé en 2ème année à EPITECH, le rythme s’accélère et je continue de développer mes compétences." },
+    { "year": "2022", "text": "Stage de 6 mois chez Wildsense en tant que développeur fullstack et mobile." },
+    { "year": "2023", "text": "Fin de ma 2ème année à EPITECH : de nouvelles connaissances et une technique encore plus poussée." },
+    { "year": "2023", "text": "Stage à temps partiel chez Wildsense, au même poste que le précédent." },
+    { "year": "2024", "text": "Stage chez OVHcloud en tant que développeur backend et IA : recherche sur les LLM, leurs méthodes de déploiement et leur intégration dans les services OVHcloud." },
+    { "year": "2024", "text": "Une année en Corée à la Korea University, spécialisée dans l’architecture logicielle et l’IA." }
+  ]
 }

@@ -1,6 +1,49 @@
 {
-    "greet": "Bonjour, je suis ",
-    "body": "Jeune étudiant de 21 ans en développement informatique en 3ème année à EPITECH Rennes, avec plus de 5 années d'expérience en développement web, mobile et logiciel en C/C++/Golang/Python. Passionné par les défis techniques, mon portfolio reflète mes projets et mes expériences marquantes. Je suis à la recherche de missions pour l'année 2024, et je suis prêt à créer des solutions innovantes.",
-    "learnMore": "En savoir plus",
-    "contact": "Me contacter"
+  "kicker": "Portfolio",
+  "deck": "Ingénieur logiciel — du C++ bas niveau aux modèles de langage et au web.",
+  "lead": "Formé à **EPITECH Rennes**, avec une année à la **Korea University**. J’ai conçu des produits web et mobile chez **Wildsense** et mené des recherches sur le déploiement des LLM chez **OVHcloud**.",
+  "ctaWork": "Voir les projets",
+  "ctaContact": "Me contacter",
+  "portrait": "Portrait",
+  "modes": {
+    "dither": "Trame",
+    "ascii": "ASCII",
+    "raw": "Brut"
+  },
+  "work": {
+    "title": "Projets choisis",
+    "deck": "Quelques choses que j’ai construites, cassées et reconstruites.",
+    "all": "Tous les projets"
+  },
+  "loadout": {
+    "title": "Arsenal",
+    "deck": "Les outils que j’utilise, et là où ils ont fait leurs preuves.",
+    "modules": [
+      {
+        "name": "Systèmes",
+        "stack": ["C", "C++", "C#", "CUDA", "Go"],
+        "text": "Du C et du C++ au quotidien à EPITECH — serveurs, simulations et un raytracer GPU."
+      },
+      {
+        "name": "IA",
+        "stack": ["Python", "LLM", "OpenCV"],
+        "text": "Recherche et déploiement de LLM chez OVHcloud ; vision par ordinateur et reconnaissance vocale en Python."
+      },
+      {
+        "name": "Web & mobile",
+        "stack": ["TypeScript", "React", "Next.js", "React Native", "Flutter", "AdonisJS"],
+        "text": "Sites, applications mobiles et API REST, mis en production chez Wildsense."
+      },
+      {
+        "name": "Outillage",
+        "stack": ["Git", "GitHub / GitLab CI", "Docker", "Linux", "Jenkins"],
+        "text": "Versioning, intégration continue et conteneurs — au quotidien."
+      }
+    ]
+  },
+  "log": {
+    "title": "Journal",
+    "deck": "La version courte de l’histoire, jusqu’ici.",
+    "more": "Toute l’histoire"
+  }
 }
