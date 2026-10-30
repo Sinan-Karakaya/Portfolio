@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 import { getTranslation, useTranslation } from '@/app/i18n'
-import { localePath, siteConfig } from '@/config/site'
+import { alternates, localePath, siteConfig } from '@/config/site'
 import { ArrowDown, ArrowRight, ArrowUpRight } from '@/components/icons'
 import { Link } from '@/components/motion/Transition'
 import Decode from '@/components/motion/Decode'
@@ -10,7 +10,7 @@ import Timeline, { Entry } from '@/components/Timeline'
 
 export async function generateMetadata({ params: { lng } }: { params: { lng: string } }): Promise<Metadata> {
   const { t } = await getTranslation(lng, 'about')
-  return { title: t('title'), description: t('lead') }
+  return { title: t('title'), description: t('lead'), alternates: alternates(lng, '/about') }
 }
 
 export default async function About({ params: { lng } }: { params: { lng: string } }) {

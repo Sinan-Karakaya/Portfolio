@@ -43,10 +43,15 @@ export default function MobileMenu({
         button.current?.focus()
       }
     }
+    // The toggle disappears at the desktop breakpoint, so the menu must not outlive it.
+    const desktop = window.matchMedia('(min-width: 1024px)')
+    const onDesktop = () => desktop.matches && setOpen(false)
     window.addEventListener('keydown', onKey)
+    desktop.addEventListener('change', onDesktop)
     return () => {
       document.body.style.overflow = prev
       window.removeEventListener('keydown', onKey)
+      desktop.removeEventListener('change', onDesktop)
     }
   }, [open])
 
@@ -90,7 +95,7 @@ export default function MobileMenu({
             ref={panel}
             aria-hidden={!open}
             className={clsx(
-              'fixed inset-0 z-[59] flex flex-col bg-bg pt-hud transition-[clip-path] duration-500 ease-in-out',
+              'fixed inset-0 z-[59] flex flex-col bg-bg pt-hud transition-[clip-path] duration-500 ease-in-out lg:hidden',
               open ? '[clip-path:inset(0_0_0_0)]' : 'pointer-events-none [clip-path:inset(0_0_100%_0)]'
             )}
           >
@@ -103,6 +108,8 @@ export default function MobileMenu({
                     href={item.href}
                     label={item.label}
                     aria-current={active ? 'page' : undefined}
+                    // The same page doesn't navigate, so close the menu here.
+                    onClick={() => item.href === pathname && setOpen(false)}
                     className={clsx(
                       'group flex items-baseline gap-4 border-b border-line py-3 transition-[transform,opacity] duration-500 ease-out',
                       open ? 'translate-x-0 skew-x-0 opacity-100' : '-translate-x-8 -skew-x-12 opacity-0'

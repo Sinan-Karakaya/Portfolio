@@ -2,7 +2,7 @@ import '@/styles/globals.css'
 import { Metadata, Viewport } from 'next'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
-import { siteConfig } from '@/config/site'
+import { alternates, siteConfig } from '@/config/site'
 import { fontVariables } from '@/config/fonts'
 import { getTranslation, useTranslation } from '@/app/i18n'
 import { languages } from '@/app/i18n/settings'
@@ -14,6 +14,7 @@ import Intro from '@/components/intro/Intro'
 import RevealObserver from '@/components/motion/RevealObserver'
 import { TransitionProvider } from '@/components/motion/Transition'
 import { bootScript } from '@/components/motion/boot'
+import BootGuard from '@/components/motion/BootGuard'
 
 export function generateStaticParams() {
   return languages.map((lng) => ({ lng }))
@@ -28,10 +29,7 @@ export async function generateMetadata({ params: { lng } }: { params: { lng: str
       template: `%s — ${siteConfig.name}`,
     },
     description: t('deck'),
-    alternates: {
-      canonical: `/${lng}`,
-      languages: Object.fromEntries(languages.map((l) => [l, `/${l}`])),
-    },
+    alternates: alternates(lng),
     openGraph: {
       type: 'website',
       siteName: siteConfig.name,
@@ -64,6 +62,7 @@ export default async function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: bootScript(siteConfig.introVariants) }} />
       </head>
       <body className={fontVariables}>
+        <BootGuard />
         <div
           id='sk-intro'
           aria-hidden='true'

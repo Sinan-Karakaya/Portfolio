@@ -1,3 +1,5 @@
+import { languages } from '@/app/i18n/settings'
+
 export type SiteConfig = typeof siteConfig
 
 export type IntroVariant = 'post' | 'allout' | 'nous' | 'lockon'
@@ -51,3 +53,9 @@ export const siteConfig = {
 }
 
 export const localePath = (lng: string, href = '') => `/${lng}${href}`
+
+// Canonical URL and hreflang alternates for one page in every language.
+export const alternates = (lng: string, path = '') => ({
+  canonical: `/${lng}${path}`,
+  languages: Object.fromEntries(languages.map((l) => [l, `/${l}${path}`])),
+})

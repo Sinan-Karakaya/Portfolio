@@ -2,7 +2,7 @@ import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { useTranslation } from '@/app/i18n'
 import { getProjects, projectNumber } from '@/app/lib/projects'
-import { localePath } from '@/config/site'
+import { alternates, localePath } from '@/config/site'
 import { ArrowLeft, ArrowRight, ArrowUpRight, GithubIcon } from '@/components/icons'
 import { Link } from '@/components/motion/Transition'
 import Decode from '@/components/motion/Decode'
@@ -25,6 +25,7 @@ export async function generateMetadata({
   return {
     title: project.title,
     description: project.summary.slice(0, 160),
+    alternates: alternates(lng, `/projects/${project.id}`),
     openGraph: { images: project.coverImage ? [project.coverImage] : undefined },
   }
 }

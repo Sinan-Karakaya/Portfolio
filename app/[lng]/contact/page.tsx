@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 import { getTranslation, useTranslation } from '@/app/i18n'
-import { siteConfig } from '@/config/site'
+import { alternates, siteConfig } from '@/config/site'
 import { ArrowDown, ArrowUpRight } from '@/components/icons'
 import ContactForm, { ContactLabels } from '@/components/ContactForm'
 import { Clock } from '@/components/chrome/Controls'
@@ -9,7 +9,7 @@ import Decode from '@/components/motion/Decode'
 
 export async function generateMetadata({ params: { lng } }: { params: { lng: string } }): Promise<Metadata> {
   const { t } = await getTranslation(lng, 'contact')
-  return { title: t('title'), description: t('deck') }
+  return { title: t('title'), description: t('deck'), alternates: alternates(lng, '/contact') }
 }
 
 export default async function ContactPage({ params: { lng } }: { params: { lng: string } }) {

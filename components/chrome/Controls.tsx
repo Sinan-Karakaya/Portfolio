@@ -46,6 +46,7 @@ export function LangSwitch({ lng, label }: { lng: string; label: string }) {
               label={LANGUAGE_NAMES[code]}
               hrefLang={code}
               lang={code}
+              prefetch={false}
               className='text-muted transition-colors hover:text-fg'
             >
               <span className='sr-only'>{LANGUAGE_NAMES[code]}</span>

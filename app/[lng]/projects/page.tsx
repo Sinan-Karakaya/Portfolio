@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 import { getTranslation, useTranslation } from '@/app/i18n'
 import { getProjects, projectNumber } from '@/app/lib/projects'
-import { localePath } from '@/config/site'
+import { alternates, localePath } from '@/config/site'
 import Decode from '@/components/motion/Decode'
 import ProjectList from '@/components/ProjectList'
 
@@ -9,7 +9,7 @@ export const revalidate = 60
 
 export async function generateMetadata({ params: { lng } }: { params: { lng: string } }): Promise<Metadata> {
   const { t } = await getTranslation(lng, 'projects')
-  return { title: t('title'), description: t('deck') }
+  return { title: t('title'), description: t('deck'), alternates: alternates(lng, '/projects') }
 }
 
 export default async function Projects({ params: { lng } }: { params: { lng: string } }) {

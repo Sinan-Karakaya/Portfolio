@@ -26,8 +26,10 @@ export function middleware(req: any) {
   }
 
   // Remember the language of the page being viewed, so the language switch sticks.
+  // Prefetches don't count: they fire for links (like the language switch) nobody followed.
+  const isPrefetch = req.headers.has('next-router-prefetch') || req.headers.get('purpose') === 'prefetch'
   const lngInPath = languages.find((l) => req.nextUrl.pathname === `/${l}` || req.nextUrl.pathname.startsWith(`/${l}/`))
   const response = NextResponse.next()
-  if (lngInPath && req.cookies.get(cookieName)?.value !== lngInPath) response.cookies.set(cookieName, lngInPath)
+  if (!isPrefetch && lngInPath && req.cookies.get(cookieName)?.value !== lngInPath) response.cookies.set(cookieName, lngInPath)
   return response
 }

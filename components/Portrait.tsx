@@ -44,6 +44,8 @@ export default function Portrait({
   const pointer = useRef<{ x: number; y: number } | null>(null)
   const redraw = useRef<(reveal?: boolean) => void>(() => {})
   const [ready, setReady] = useState(false)
+  // If a study can't load, fall back to the plain photograph instead of an empty frame.
+  const [failed, setFailed] = useState(false)
 
   useEffect(() => {
     const el = canvas.current
@@ -217,6 +219,7 @@ export default function Portrait({
       try {
         ;[, color] = await Promise.all([ensureGray(), loadImage(src)])
       } catch {
+        if (alive) setFailed(true)
         return
       }
       if (!alive) return
@@ -294,10 +297,10 @@ export default function Portrait({
         <img
           src={src}
           alt={alt}
-          data-pending={ready ? undefined : ''}
+          data-pending={ready || failed ? undefined : ''}
           className={clsx(
             'absolute inset-0 h-full w-full object-cover transition-opacity duration-500',
-            mode === 'raw' || !ready ? 'opacity-100' : 'opacity-0'
+            mode === 'raw' || !ready || failed ? 'opacity-100' : 'opacity-0'
           )}
         />
         <canvas
@@ -305,7 +308,7 @@ export default function Portrait({
           aria-hidden='true'
           className={clsx(
             'absolute inset-0 h-full w-full cursor-crosshair transition-opacity duration-300 [image-rendering:pixelated]',
-            mode === 'raw' ? 'pointer-events-none opacity-0' : 'opacity-100'
+            mode === 'raw' || failed ? 'pointer-events-none opacity-0' : 'opacity-100'
           )}
         />
       </div>

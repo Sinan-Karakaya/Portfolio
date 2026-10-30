@@ -25,6 +25,7 @@ export default function Intro({ variant, strings }: { lng: string; variant: Intr
     if (!root) return
     ensureBooted()
     let active: ReturnType<typeof runIntro> | null = null
+    let cancelWait: (() => void) | null = null
     let seq = 0
 
     const pick = (): IntroVariant => {
@@ -32,15 +33,60 @@ export default function Intro({ variant, strings }: { lng: string; variant: Intr
       return q && siteConfig.introVariants.includes(q) ? q : variant
     }
 
+    const markSeen = () => {
+      try {
+        sessionStorage.setItem(INTRO_SEEN_KEY, '1')
+      } catch {}
+    }
+
+    // Puts the page back without an intro.
+    const bail = () => {
+      html.dataset.intro = 'off'
+      root.dataset.state = 'done'
+      root.replaceChildren()
+      setBoot('ready')
+    }
+
     const start = async (v: IntroVariant) => {
       const token = ++seq
       active?.destroy()
       active = null
+      cancelWait?.()
       html.dataset.intro = 'on'
       root.dataset.state = 'playing'
       setBoot('pending')
-      const { default: player } = await players[v]()
+
+      // The chunk may still be downloading: let the visitor skip the wait, and give up if it never arrives.
+      const giveUp = (seen: boolean) => {
+        if (token !== seq) return
+        seq++
+        cancelWait?.()
+        if (seen) markSeen()
+        bail()
+      }
+      const onKey = (e: KeyboardEvent) => {
+        if (['Escape', 'Enter', ' '].includes(e.key)) giveUp(true)
+      }
+      const onPointer = () => giveUp(true)
+      const timer = setTimeout(() => giveUp(false), 6000)
+      window.addEventListener('keydown', onKey)
+      root.addEventListener('pointerdown', onPointer)
+      cancelWait = () => {
+        clearTimeout(timer)
+        window.removeEventListener('keydown', onKey)
+        root.removeEventListener('pointerdown', onPointer)
+        cancelWait = null
+      }
+
+      let player: IntroPlayer
+      try {
+        player = (await players[v]()).default
+      } catch {
+        giveUp(false)
+        return
+      }
       if (token !== seq) return
+      cancelWait?.()
       active = runIntro({
         root,
         player,
@@ -51,9 +97,7 @@ export default function Intro({ variant, strings }: { lng: string; variant: Intr
         onDone: () => {
           html.dataset.intro = 'off'
           active = null
-          try {
-            sessionStorage.setItem(INTRO_SEEN_KEY, '1')
-          } catch {}
+          markSeen()
         },
       })
     }
@@ -67,6 +111,7 @@ export default function Intro({ variant, strings }: { lng: string; variant: Intr
 
     return () => {
       seq++
+      cancelWait?.()
       window.removeEventListener(INTRO_REPLAY_EVENT, replay)
       if (active) {
         active.destroy()

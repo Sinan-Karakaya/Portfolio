@@ -2,7 +2,17 @@
 
 import NextLink from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
-import { ComponentProps, MouseEvent, ReactNode, createContext, useCallback, useContext, useEffect, useRef } from 'react'
+import {
+  ComponentProps,
+  MouseEvent,
+  ReactNode,
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+} from 'react'
 import { motionEnabled, setBoot } from './boot'
 import { sfx } from './sfx'
 
@@ -14,6 +24,12 @@ const TransitionContext = createContext<Go | null>(null)
 
 const BANDS = ['bg-volt', 'bg-fg', 'bg-bg-2']
 const SKEW = 'skewX(-14deg)'
+
+const useIsomorphicLayoutEffect = typeof window === 'undefined' ? useEffect : useLayoutEffect
+
+// A transition that is covering the screen. Kept outside React because switching
+// language remounts the whole layout, provider included, mid-transition.
+let inFlight: { label: string; path: string } | null = null
 
 export function TransitionProvider({ children, loadingLabel }: { children: ReactNode; loadingLabel: string }) {
   const router = useRouter()
@@ -31,6 +47,7 @@ export function TransitionProvider({ children, loadingLabel }: { children: React
   const uncover = useCallback(() => {
     clearTimeout(safety.current)
     pending.current = null
+    inFlight = null
     const root = overlay.current
     if (!root) return
     window.scrollTo(0, 0)
@@ -111,6 +128,7 @@ export function TransitionProvider({ children, loadingLabel }: { children: React
           setBoot('pending')
           pending.current = url.pathname
           from.current = window.location.pathname
+          inFlight = { label: label ?? '', path: url.pathname }
           router.push(url.pathname + url.search + url.hash, { scroll: false })
           safety.current = setTimeout(uncover, 6000)
         })
@@ -126,6 +144,21 @@ export function TransitionProvider({ children, loadingLabel }: { children: React
   }, [pathname, uncover])
 
   useEffect(() => () => clearTimeout(safety.current), [])
+
+  // Remounted while covered (the root layout changed under a transition): pick up
+  // where the previous provider left off and open the shutters on the new page.
+  useIsomorphicLayoutEffect(() => {
+    const root = overlay.current
+    if (!inFlight || !root) return
+    busy.current = true
+    if (title.current) title.current.textContent = inFlight.label
+    if (path.current) path.current.textContent = inFlight.path
+    root.style.visibility = 'visible'
+    root.style.pointerEvents = 'auto'
+    root.querySelector<HTMLElement>('[data-label]')?.style.setProperty('opacity', '1')
+    bands().forEach((band) => (band.style.transform = `translateX(0) ${SKEW}`))
+    requestAnimationFrame(() => requestAnimationFrame(uncover))
+  }, [uncover])
 
   return (
     <TransitionContext.Provider value={go}>
